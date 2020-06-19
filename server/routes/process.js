@@ -4,9 +4,9 @@ var router = express.Router();
 
 router.post('/', async (req, res) => {
 	
-	let organizationId = req.body.organizationId;
+	//let organizationId = req.body.organizationId;
 
-	console.log('organizationId', organizationId); 
+	console.log('organizationId', req.body); 
 	
 });
 
