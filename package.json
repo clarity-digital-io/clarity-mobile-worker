@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "npm run prod",
 		"build": "npm-run-all clean transpile",
-		"worker": "node ./dist-worker/app.js",
+		"worker": "node ./dist-worker/worker.js",
 		"dev": "NODE_ENV=development npm-run-all build worker",
 		"prod": "NODE_ENV=production npm-run-all build worker",
 		"transpile": "babel ./worker --out-dir dist-worker",
