@@ -1,5 +1,5 @@
-let throng = require('throng');
-let Queue = require("bull");
+import throng from 'throng';
+import Queue from 'bull'; );
 
 let PORT = '10579';
 let HOST = 'ec2-54-205-115-98.compute-1.amazonaws.com';
