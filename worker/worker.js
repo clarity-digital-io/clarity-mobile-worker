@@ -14,8 +14,10 @@ function sleep(ms) {
 }
 
 function start() {
-  // Connect to the named work queue
+	// Connect to the named work queue
+	console.log('start');
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+	console.log('workQueue', workQueue);
 
   workQueue.process(maxJobsPerWorker, async (job) => {
 		console.log('workqueue', job); 
