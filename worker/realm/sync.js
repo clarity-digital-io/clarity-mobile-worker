@@ -1,4 +1,4 @@
-export const sync = async(realm, forms) => {
+export const sync = (realm, forms) => {
 
 	realm.write(() => {
 
@@ -54,7 +54,5 @@ export const sync = async(realm, forms) => {
 		});
 
 	});
-
-	realm.close(); 
 
 }

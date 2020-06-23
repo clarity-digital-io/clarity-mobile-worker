@@ -21,27 +21,21 @@ function start() {
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
 
   workQueue.process(maxJobsPerWorker, async (job, done) => {
-		console.log('job.data', job.data); 
+
 		const realm = await openRealm(job.data.organizationId);
 	
-		// const forms = prepareForms(job.data.forms); 
+		const forms = prepareForms(job.data.forms); 
 
-		// const status = await sync(realm, forms);
+		sync(realm, forms);
 
-
-		console.log('workqueue', job.id); 
-
-		console.log('workqueue', job.data); 
+		realm.close(); 
 
 		done();
-    // A job can return values that will be stored in Redis as JSON
-    // This return value is unused in this demo application.
-		return { value: "This will be stored" };
 		
 	});
 	
 	workQueue.on('completed', function(job, result){
-		console.log('complete', job, result); 
+		console.log('complete', job.id, result); 
 		//finally update with the status log__c in organizationid
 		//write back to org query for login info
 	})
