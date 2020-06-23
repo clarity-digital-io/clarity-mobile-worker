@@ -26,7 +26,7 @@ function start() {
 
 		realm.close(); 
 
-		done();
+		done(null, { organizationId: organizationId });
 		
 	});
 	
