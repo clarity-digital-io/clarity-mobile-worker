@@ -26,7 +26,7 @@ function start() {
 
 		realm.close(); 
 
-		done(null, { organizationId: organizationId });
+		done(null, { organizationId: job.data.organizationId });
 		
 	});
 	
