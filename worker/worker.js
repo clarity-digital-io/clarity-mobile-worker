@@ -20,7 +20,7 @@ function start() {
 
 		const realm = await openRealm(job.data.organizationId);
 	
-		const forms = prepareForms(job.data.forms); 
+		const forms = prepare(job.data.forms); 
 
 		sync(realm, forms);
 
