@@ -22,11 +22,11 @@ function start() {
 
   workQueue.process(maxJobsPerWorker, async (job, done) => {
 		console.log('job.data', job.data); 
-		const realm = await openRealm(job.data.organizationId);
+		// const realm = await openRealm(job.data.organizationId);
 	
-		const forms = prepareForms(job.data.forms); 
+		// const forms = prepareForms(job.data.forms); 
 
-		const status = await sync(realm, forms);
+		// const status = await sync(realm, forms);
 
 		//finally update with the status log__c in organizationid
 
