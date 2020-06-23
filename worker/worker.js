@@ -22,22 +22,28 @@ function start() {
 
   workQueue.process(maxJobsPerWorker, async (job, done) => {
 
-		const realm = await openRealm(organizationId);
+		const realm = await openRealm(job.data.orgnizationId);
 	
-		const forms = prepareForms(req.body.forms); 
+		const forms = prepareForms(job.data.forms); 
 
 		const status = await sync(realm, forms);
 
-		done();
+		//finally update with the status log__c in organizationid
 
+		console.log('workqueue', job.id); 
+
+		console.log('workqueue', job.data); 
+
+		done();
+    // A job can return values that will be stored in Redis as JSON
+    // This return value is unused in this demo application.
 		return { value: "This will be stored" };
 		
 	});
 	
 	workQueue.on('completed', function(job, result){
 		console.log('complete', job, result); 
-	});
-
+	})
 }
 
 // Initialize the clustered worker process
