@@ -18,7 +18,7 @@ function start() {
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
 
   workQueue.process(maxJobsPerWorker, async (job) => {
-		console.log('workqueue', job.Id); 
+		console.log('workqueue', job.id); 
 
 		console.log('workqueue', job.data); 
     let progress = 0;
