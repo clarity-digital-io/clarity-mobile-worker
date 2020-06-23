@@ -15,12 +15,10 @@ function sleep(ms) {
 
 function start() {
 	// Connect to the named work queue
-	console.log('start');
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-	console.log('workQueue', workQueue);
 
   workQueue.process(maxJobsPerWorker, async (job) => {
-		console.log('workqueue', job); 
+		console.log('workqueue', job.data); 
     let progress = 0;
     // A job can return values that will be stored in Redis as JSON
     // This return value is unused in this demo application.
