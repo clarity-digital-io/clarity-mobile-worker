@@ -17,35 +17,27 @@ function sleep(ms) {
 }
 
 function start() {
-	// Connect to the named work queue
+
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
 
-  workQueue.process(maxJobsPerWorker, async (job) => {
+  workQueue.process(maxJobsPerWorker, async (job, done) => {
 
-		//prep forms 
-
-		//open realm 
-
-		//synforms 
-
-		// const realm = await openRealm(organizationId);
+		const realm = await openRealm(organizationId);
 	
-		// const forms = prepareForms(req.body.forms); 
+		const forms = prepareForms(req.body.forms); 
 
-		// const status = await sync(realm, forms);
+		const status = await sync(realm, forms);
 
-		//finally update with the status log__c in organizationid
+		done();
 
-		console.log('workqueue', job.id); 
-
-		console.log('workqueue', job.data); 
-
-    let progress = 0;
-    // A job can return values that will be stored in Redis as JSON
-    // This return value is unused in this demo application.
 		return { value: "This will be stored" };
 		
-  });
+	});
+	
+	workQueue.on('completed', function(job, result){
+		console.log('complete', job, result); 
+	});
+
 }
 
 // Initialize the clustered worker process
