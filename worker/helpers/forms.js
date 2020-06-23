@@ -12,6 +12,7 @@ export const prepare = (salesforceForms) => {
 			Multi_Page__c: form.forms__Multi_Page__c,
 			Multi_Page_Val__c: form.forms__Multi_Page_Val__c,
 			Multi_Page_Info__c: form.forms__Multi_Page_Info__c,
+			Description__c: form.forms__Description__c
 		};
 
 		let nQuestionOptions = new Map();
