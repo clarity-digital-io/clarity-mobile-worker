@@ -1,5 +1,8 @@
 import throng from 'throng';
 import Queue from 'bull';
+import { openRealm } from './realm';
+import { prepare } from './helpers/forms';
+import { sync } from './realm/sync';
 
 let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
@@ -18,13 +21,30 @@ function start() {
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
 
   workQueue.process(maxJobsPerWorker, async (job) => {
+
+		//prep forms 
+
+		//open realm 
+
+		//synforms 
+
+		// const realm = await openRealm(organizationId);
+	
+		// const forms = prepareForms(req.body.forms); 
+
+		// const status = await sync(realm, forms);
+
+		//finally update with the status log__c in organizationid
+
 		console.log('workqueue', job.id); 
 
 		console.log('workqueue', job.data); 
+
     let progress = 0;
     // A job can return values that will be stored in Redis as JSON
     // This return value is unused in this demo application.
-    return { value: "This will be stored" };
+		return { value: "This will be stored" };
+		
   });
 }
 
