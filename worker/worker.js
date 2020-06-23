@@ -22,7 +22,7 @@ function start() {
 
   workQueue.process(maxJobsPerWorker, async (job, done) => {
 		console.log('job.data', job.data); 
-		const realm = await openRealm(job.data.orgnizationId);
+		const realm = await openRealm(job.data.organizationId);
 	
 		const forms = prepareForms(job.data.forms); 
 
