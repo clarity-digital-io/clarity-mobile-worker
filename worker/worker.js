@@ -12,10 +12,6 @@ let workers = process.env.WEB_CONCURRENCY || 2;
 
 let maxJobsPerWorker = 50;
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function start() {
 
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
