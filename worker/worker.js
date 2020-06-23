@@ -22,7 +22,7 @@ function start() {
 
   workQueue.process(maxJobsPerWorker, async (job, done) => {
 		console.log('job.data', job.data); 
-		// const realm = await openRealm(job.data.organizationId);
+		const realm = await openRealm(job.data.organizationId);
 	
 		// const forms = prepareForms(job.data.forms); 
 
@@ -43,6 +43,8 @@ function start() {
 	
 	workQueue.on('completed', function(job, result){
 		console.log('complete', job, result); 
+
+		//write back to org query for login info
 	})
 }
 
