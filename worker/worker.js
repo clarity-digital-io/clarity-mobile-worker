@@ -21,7 +21,7 @@ function start() {
 	let workQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
 
   workQueue.process(maxJobsPerWorker, async (job, done) => {
-
+		console.log('job.data', job.data); 
 		const realm = await openRealm(job.data.orgnizationId);
 	
 		const forms = prepareForms(job.data.forms); 
