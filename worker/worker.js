@@ -28,7 +28,6 @@ function start() {
 
 		// const status = await sync(realm, forms);
 
-		//finally update with the status log__c in organizationid
 
 		console.log('workqueue', job.id); 
 
@@ -43,7 +42,7 @@ function start() {
 	
 	workQueue.on('completed', function(job, result){
 		console.log('complete', job, result); 
-
+		//finally update with the status log__c in organizationid
 		//write back to org query for login info
 	})
 }

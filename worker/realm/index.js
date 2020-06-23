@@ -4,7 +4,7 @@ import { FormSchema, QuestionSchema, QuestionOptionSchema, QuestionCriteriaSchem
 const SERVER_URL = 'https://forms-dev.us1a.cloud.realm.io';
 const REALM_URL = 'realms://forms-dev.us1a.cloud.realm.io';
 
-export const openRealm = async (organization) => {
+export const openRealm = async (organizationId) => {
 
 	try {
 
