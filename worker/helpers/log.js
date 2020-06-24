@@ -32,9 +32,7 @@ const getAccessToken = async (organizationId) => {
 
 const getUser = async (access_token) => {
 
-	const response = await axios.post('https://clarity-api-auth.herokuapp.com/credentials', { 'idToken': access_token }, { 'Content-Type': 'application/json' });
-
-	const user = await response.json();
+	const user = await axios.post('https://clarity-api-auth.herokuapp.com/credentials', { 'idToken': access_token }, { 'Content-Type': 'application/json' });
 	console.log('/***********USER***********/', user); 
 	return user;
 	
