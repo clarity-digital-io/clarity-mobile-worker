@@ -3,6 +3,7 @@ import Queue from 'bull';
 import { openRealm } from './realm';
 import { prepare } from './helpers/forms';
 import { sync } from './realm/sync';
+import { log } from './helpers/log';
 
 let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
@@ -34,9 +35,12 @@ function start() {
 		console.log('complete', job.id, result); 
 		//finally update with the status log__c in organizationid
 		//write back to org query for login info
-	})
+		log(job.id, result)
+	});
+
+	//realm listener pushes to redis queue and redis queue consumes this
+	//the listner consumer process the updates and then updates the final org
+
 }
 
-// Initialize the clustered worker process
-// See: https://devcenter.heroku.com/articles/node-concurrency for more info
 throng({ workers, start });
