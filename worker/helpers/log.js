@@ -8,19 +8,20 @@ const password = 'Clarity2020!hK0S8pi2pXOQ7tjsADGijhFV';
 
 export const log = async (jobId, result) => {
 
-	const data = await getOrganizationInfo(result.organizationId);
-	console.log('data 0', data); 
+	const {access_token} = await getAccessToken(result.organizationId);
+	console.log('data 0', access_token); 
 
 	//const test = await updateJobInfo(); 
 
 }
 
-const getOrganizationInfo = async (organizationId) => {
+const getAccessToken = async (organizationId) => {
 
 	try {
-		const  {data} = await axios.post(`https://test.salesforce.com/services/oauth2/token?grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}&username=${username}&password=${password}`);
-		console.log('data 1', data); 
+		const { data } = await axios.post(`https://test.salesforce.com/services/oauth2/token?grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}&username=${username}&password=${password}`);
+
 		const response = await axios.post(`${data.instance_url}/services/apexrest/Tokens/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
+		console.log(response)
 		return response; 
 	} catch (error) {
 		console.log('error', error); 
