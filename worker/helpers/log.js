@@ -11,8 +11,7 @@ export const log = async (jobId, result) => {
 	const { access_token } = await getAccessToken(result.organizationId);
 	
 	const data = await getUser(access_token); 
-	console.log('data', data);
-	//const test = await updateJobInfo(access_token, jobId); 
+	const test = await updateJobInfo(data, jobId); 
 
 }
 
@@ -34,15 +33,14 @@ const getUser = async (access_token) => {
 	//we can probably skip, get the real access token through a user agent flow step + refresh token
 	//https://help.salesforce.com/articleView?id=remoteaccess_oauth_user_agent_flow.htm&type=5
 	const { data } = await axios.post('https://clarity-api-auth.herokuapp.com/credentials', { 'idToken': access_token }, { 'Content-Type': 'application/json' });
-	console.log('/***********USER***********/', data); 
 	return data;
 	
 }
 
-const updateJobInfo = async (access_token, jobId) => {
+const updateJobInfo = async ({url, access_token}, jobId) => {
 
 	try {
-		const response = await axios.post(`https://saas-app-3236-dev-ed.cs40.my.salesforce.com/services/apexrest/forms/v1/Jobs/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
+		const response = await axios.post(`${url}/services/apexrest/forms/v1/Jobs/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
 		console.log('response updatejobinfo', response); 
 	} catch (error) {
 		console.log('error', error); 
