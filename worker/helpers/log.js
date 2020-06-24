@@ -20,9 +20,9 @@ const getAccessToken = async (organizationId) => {
 
 	try {
 		const { data } = await axios.post(`https://test.salesforce.com/services/oauth2/token?grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}&username=${username}&password=${password}`);
-		console.log('my access token', data); 
+
 		const response = await axios.post(`${data.instance_url}/services/apexrest/Tokens/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
-		console.log(response)
+
 		return response.data; 
 	} catch (error) {
 		console.log('error', error); 
@@ -31,7 +31,8 @@ const getAccessToken = async (organizationId) => {
 }
 
 const getUser = async (access_token) => {
-
+	//we can probably skip, get the real access token through a user agent flow step + refresh token
+	//https://help.salesforce.com/articleView?id=remoteaccess_oauth_user_agent_flow.htm&type=5
 	const user = await axios.post('https://clarity-api-auth.herokuapp.com/credentials', { 'idToken': access_token }, { 'Content-Type': 'application/json' });
 	console.log('/***********USER***********/', user); 
 	return user;
