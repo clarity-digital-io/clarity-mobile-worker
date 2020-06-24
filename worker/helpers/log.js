@@ -11,7 +11,7 @@ export const log = async (jobId, result) => {
 	const { access_token } = await getAccessToken(result.organizationId);
 	console.log('data 0', access_token); 
 
-	const test = await updateJobInfo(); 
+	const test = await updateJobInfo(access_token, jobId); 
 
 }
 
@@ -29,10 +29,11 @@ const getAccessToken = async (organizationId) => {
 
 }
 
-const updateJobInfo = async () => {
+const updateJobInfo = async (jobId) => {
 
 	try {
-		const response = await axios.post(`https://saas-app-3236-dev-ed.cs40.my.salesforce.com/services/apexrest/Job/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
+		const response = await axios.post(`https://saas-app-3236-dev-ed.cs40.my.salesforce.com/services/apexrest/forms/v1/Jobs/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
+		console.log('response updatejobinfo', response); 
 	} catch (error) {
 		console.log('error', error); 
 	}
