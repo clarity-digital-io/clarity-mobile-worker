@@ -30,7 +30,7 @@ const getAccessToken = async (organizationId) => {
 
 }
 
-const getUser = (access_token) => {
+const getUser = async (access_token) => {
 
 	const response = await fetch('https://clarity-api-auth.herokuapp.com/credentials', {
 		method: 'post',
