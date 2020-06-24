@@ -10,8 +10,8 @@ export const log = async (jobId, result) => {
 
 	const { access_token } = await getAccessToken(result.organizationId);
 	
-	const user = await getUser(access_token); 
-	console.log('user', user);
+	const data = await getUser(access_token); 
+	console.log('data', data);
 	//const test = await updateJobInfo(access_token, jobId); 
 
 }
@@ -33,9 +33,9 @@ const getAccessToken = async (organizationId) => {
 const getUser = async (access_token) => {
 	//we can probably skip, get the real access token through a user agent flow step + refresh token
 	//https://help.salesforce.com/articleView?id=remoteaccess_oauth_user_agent_flow.htm&type=5
-	const user = await axios.post('https://clarity-api-auth.herokuapp.com/credentials', { 'idToken': access_token }, { 'Content-Type': 'application/json' });
-	console.log('/***********USER***********/', user); 
-	return user;
+	const { data } = await axios.post('https://clarity-api-auth.herokuapp.com/credentials', { 'idToken': access_token }, { 'Content-Type': 'application/json' });
+	console.log('/***********USER***********/', data); 
+	return data;
 	
 }
 
