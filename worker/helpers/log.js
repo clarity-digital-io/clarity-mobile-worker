@@ -9,9 +9,10 @@ const password = 'Clarity2020!hK0S8pi2pXOQ7tjsADGijhFV';
 export const log = async (jobId, result) => {
 
 	const { access_token } = await getAccessToken(result.organizationId);
-	console.log('data 0', access_token); 
-
-	const test = await updateJobInfo(access_token, jobId); 
+	
+	const user = await getUser(access_token); 
+	console.log('user', user);
+	//const test = await updateJobInfo(access_token, jobId); 
 
 }
 
@@ -27,6 +28,22 @@ const getAccessToken = async (organizationId) => {
 		console.log('error', error); 
 	}
 
+}
+
+const getUser = (access_token) => {
+
+	const response = await fetch('https://clarity-api-auth.herokuapp.com/credentials', {
+		method: 'post',
+		body: JSON.stringify({ 'idToken': access_token }),
+		headers: new Headers({
+			'Content-Type': 'application/json'
+		})
+	})
+
+	const user = await response.json();
+	console.log('/***********USER***********/', user); 
+	return user;
+	
 }
 
 const updateJobInfo = async (access_token, jobId) => {
