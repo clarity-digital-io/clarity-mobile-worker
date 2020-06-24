@@ -8,10 +8,10 @@ const password = 'Clarity2020!hK0S8pi2pXOQ7tjsADGijhFV';
 
 export const log = async (jobId, result) => {
 
-	const {access_token} = await getAccessToken(result.organizationId);
+	const { access_token } = await getAccessToken(result.organizationId);
 	console.log('data 0', access_token); 
 
-	//const test = await updateJobInfo(); 
+	const test = await updateJobInfo(); 
 
 }
 
@@ -22,7 +22,7 @@ const getAccessToken = async (organizationId) => {
 
 		const response = await axios.post(`${data.instance_url}/services/apexrest/Tokens/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
 		console.log(response)
-		return response; 
+		return response.data; 
 	} catch (error) {
 		console.log('error', error); 
 	}
@@ -32,7 +32,7 @@ const getAccessToken = async (organizationId) => {
 const updateJobInfo = async () => {
 
 	try {
-		const response = await axios.post(`https://dream-business-5073-dev-ed.cs40.my.salesforce.com/services/apexrest/Job/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
+		const response = await axios.post(`https://saas-app-3236-dev-ed.cs40.my.salesforce.com/services/apexrest/Job/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
 	} catch (error) {
 		console.log('error', error); 
 	}
