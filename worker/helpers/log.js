@@ -29,7 +29,7 @@ const getAccessToken = async (organizationId) => {
 
 }
 
-const updateJobInfo = async (jobId) => {
+const updateJobInfo = async (access_token, jobId) => {
 
 	try {
 		const response = await axios.post(`https://saas-app-3236-dev-ed.cs40.my.salesforce.com/services/apexrest/forms/v1/Jobs/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
