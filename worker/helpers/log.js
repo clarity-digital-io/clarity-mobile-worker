@@ -6,9 +6,9 @@ const client_secret = '00A082693387D6718AC18AEA088DC459F656E945B96FFE219EBF40C2D
 const username = 'test-is7noj24esie@example.com';
 const password = 'Clarity2020!hK0S8pi2pXOQ7tjsADGijhFV';
 
-export const log = async (jobId, organizationId) => {
-	console.log('organizationid', organizationId); 
-	const data = await getOrganizationInfo(organizationId);
+export const log = async (jobId, result) => {
+
+	const data = await getOrganizationInfo(result.organizationId);
 	console.log('data 0', data); 
 
 	//const test = await updateJobInfo(); 
