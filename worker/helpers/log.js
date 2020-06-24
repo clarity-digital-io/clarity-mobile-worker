@@ -20,7 +20,7 @@ const getAccessToken = async (organizationId) => {
 
 	try {
 		const { data } = await axios.post(`https://test.salesforce.com/services/oauth2/token?grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}&username=${username}&password=${password}`);
-
+		console.log('my access token', data); 
 		const response = await axios.post(`${data.instance_url}/services/apexrest/Tokens/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
 		console.log(response)
 		return response.data; 
