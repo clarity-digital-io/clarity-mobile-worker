@@ -2,7 +2,7 @@ import { openRealm } from '../realm';
 import { prepare } from '../helpers/forms';
 import { sync } from '../realm/sync';
 
-export const connect = (job, done) => {
+export const connect = async (job, done) => {
 
 		const realm = await openRealm(job.data.organizationId);
 	
