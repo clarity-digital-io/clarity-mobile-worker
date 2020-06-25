@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const sendAnswers = async (job, done) => {
 	
 		const answers = job.data;
