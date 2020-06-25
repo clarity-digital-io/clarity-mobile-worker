@@ -3,6 +3,7 @@ import Queue from 'bull';
 import { log } from './helpers/log';
 import { connect } from './consumer/connect';
 import { sendAnswers } from './consumer/answers';
+import { sendResponses } from './consumer/responses';
 
 let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
@@ -21,6 +22,10 @@ function start() {
 
 	let realmQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   realmQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
+	realmQueue.on('completed', (job, result) => log(job.id, result));
+
+	let realmQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  realmQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
 	realmQueue.on('completed', (job, result) => log(job.id, result));
 
 }

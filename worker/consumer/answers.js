@@ -1,5 +1,3 @@
-import { prepare } from '../helpers/forms';
-
 export const sendAnswers = (job, done) => {
 	
 		const answers = job.data;
