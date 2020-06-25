@@ -1,19 +1,20 @@
-export const sendAnswers = (job, done) => {
+export const sendAnswers = async (job, done) => {
 	
 		const answers = job.data;
 
-		await sync(answers);
-
+		const response = await sync(answers);
+		console.log('response', response); 
 		done(null, { organizationId: job.data.organizationId });
 		
 }
 
 const sync = async (answers) => {
-	console.log('all the way to sync', answers); 
 
-	const { access_token } = await getAccessToken(result.organizationId);
+	const data = await getAccessToken(result.organizationId);
 	
-	const test = await updateAnswers(data, jobId); 
+	const response = await updateAnswers(data, answers); 
+
+	return response; 
 
 }
 
@@ -37,6 +38,7 @@ const updateAnswers = async ({url, access_token}, jobId) => {
 	try {
 		const response = await axios.post(`${url}/services/apexrest/forms/v1/Answers/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
 		console.log('response updatejobinfo', response); 
+		return response; 
 	} catch (error) {
 		console.log('error', error); 
 	}
