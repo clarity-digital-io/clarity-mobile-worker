@@ -1,5 +1,4 @@
 import { prepare } from '../helpers/forms';
-import { sync } from '../realm/sync';
 
 export const sendAnswers = (job, done) => {
 	
