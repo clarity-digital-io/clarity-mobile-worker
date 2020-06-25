@@ -1,16 +1,17 @@
 export const sendAnswers = async (job, done) => {
 	
 		const answers = job.data;
+		const organizationId = job.data.organizationId;
 
-		const response = await sync(answers);
+		const response = await sync(answers, organizationId);
 		console.log('response', response); 
-		done(null, { organizationId: job.data.organizationId });
+		done(null, { organizationId: organizationId });
 		
 }
 
-const sync = async (answers) => {
+const sync = async (answers, organizationId) => {
 
-	const data = await getAccessToken(result.organizationId);
+	const data = await getAccessToken(organizationId);
 	
 	const response = await updateAnswers(data, answers); 
 
