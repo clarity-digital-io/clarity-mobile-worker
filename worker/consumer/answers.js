@@ -42,10 +42,10 @@ const getAccessToken = async (organizationId) => {
 
 }
 
-const updateAnswers = async ({url, access_token}, jobId) => {
+const updateAnswers = async ({instance_url, access_token}, jobId) => {
 
 	try {
-		const response = await axios.post(`${url}/services/apexrest/forms/v1/Answers/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
+		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
 		console.log('response updatejobinfo', response); 
 		return response; 
 	} catch (error) {
