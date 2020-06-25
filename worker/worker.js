@@ -20,13 +20,13 @@ function start() {
   connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
 	connectQueue.on('completed', (job, result) => log(job.id, result));
 
-	let realmQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  realmQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
-	realmQueue.on('completed', (job, result) => log(job.id, result));
+	let answerQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  answerQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
+	answerQueue.on('completed', (job, result) => log(job.id, result));
 
-	let realmQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  realmQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
-	realmQueue.on('completed', (job, result) => log(job.id, result));
+	let responseQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  responseQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
+	responseQueue.on('completed', (job, result) => log(job.id, result));
 
 }
 
