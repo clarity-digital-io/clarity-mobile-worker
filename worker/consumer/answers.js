@@ -21,7 +21,7 @@ const sync = async (answers, organizationId) => {
 
 	const data = await getAccessToken(organizationId);
 	
-	const response = await updateAnswers(data, answers); 
+	const response = await updateAnswers(data, organizationId, answers); 
 
 	return response; 
 
@@ -33,7 +33,6 @@ const getAccessToken = async (organizationId) => {
 		const { data } = await axios.post(`https://test.salesforce.com/services/oauth2/token?grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}&username=${username}&password=${password}`);
 
 		const response = await axios.post(`${data.instance_url}/services/apexrest/Tokens/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
-		console.log('response', response); 
 		return response.data; 
 
 	} catch (error) {
@@ -42,10 +41,10 @@ const getAccessToken = async (organizationId) => {
 
 }
 
-const updateAnswers = async ({instance_url, access_token}, jobId) => {
+const updateAnswers = async ({instance_url, access_token}, organizationId, answers) => {
 
 	try {
-		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers/${jobId}`, {}, { headers: { Authorization: "Bearer " + access_token } });
+		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers/${organizationId}`, { answers: answers }, { headers: { Authorization: "Bearer " + access_token } });
 		console.log('response updatejobinfo', response); 
 		return response; 
 	} catch (error) {
