@@ -8,7 +8,7 @@ const password = 'Clarity2020!hK0S8pi2pXOQ7tjsADGijhFV';
 
 export const sendAnswers = async (job, done) => {
 	
-		const answers = job.data;
+		const answers = job.data.answers;
 		const organizationId = job.data.organizationId;
 
 		const response = await sync(answers, organizationId);
@@ -36,19 +36,18 @@ const getAccessToken = async (organizationId) => {
 		return response.data; 
 
 	} catch (error) {
-		console.log('error', error); 
+		console.log('error'); 
 	}
 
 }
 
 const updateAnswers = async ({instance_url, access_token}, organizationId, answers) => {
-
+	console.log('updateAnswers', instance_url, access_token, organizationId);
 	try {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers/${organizationId}`, { answers: answers }, { headers: { Authorization: "Bearer " + access_token } });
-		console.log('response updatejobinfo', response); 
 		return response; 
 	} catch (error) {
-		console.log('error', error); 
+		console.log('error'); 
 	}
 
 }
