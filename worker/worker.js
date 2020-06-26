@@ -9,7 +9,7 @@ let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
 let PASSWORD = 'p2be04e53cb71f4970daa5e90bc1f15f0c2086fd2850609eef7c057babf2051aa';
 
-let workers = process.env.WEB_CONCURRENCY || 2;
+let workers = process.env.WEB_CONCURRENCY || 1;
 
 let maxJobsPerWorker = 50;
 
