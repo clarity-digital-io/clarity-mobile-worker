@@ -30,7 +30,7 @@ const updateResponses = async ({instance_url, access_token}, responses) => {
 		return response; 
 	} catch (error) {
 		if(error.response) {
-			console.log('error.response')
+			console.log('error.response', error.response); 
 		}
 
 		if(error.request) {
