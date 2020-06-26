@@ -19,7 +19,7 @@ export const sendAnswers = async (job, done) => {
 
 const sync = async (answers, organizationId) => {
 
-	const data = await getAccessToken(organizationId);
+	const data = await getClientAccessToken(organizationId);
 	
 	const response = await updateAnswers(data, organizationId, answers); 
 
@@ -27,7 +27,7 @@ const sync = async (answers, organizationId) => {
 
 }
 
-const getAccessToken = async (organizationId) => {
+const getClientAccessToken = async (organizationId) => {
 
 	try {
 		const { data } = await axios.post(`https://test.salesforce.com/services/oauth2/token?grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}&username=${username}&password=${password}`);
@@ -47,7 +47,7 @@ const updateAnswers = async ({instance_url, access_token}, organizationId, answe
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers/100`,  {}, { headers: { Authorization: "Bearer " + access_token } });
 		return response; 
 	} catch (error) {
-		console.log('error'); 
+		console.log('error', error); 
 	}
 
 }

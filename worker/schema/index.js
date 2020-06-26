@@ -152,10 +152,9 @@ export const ProfileSchema = {
 	properties: {
 		id: 'string',
 		email: 'string', 
-		access_token: 'string',
 		full_name: 'string',
 		avatar: 'string',
 		last_sync: 'date',
-		sync_status: 'string' //Sync Complete / Requested / In Progress / Sync Failed / Not Started / Request Failed
+		sync_status: 'string' //Complete / Requested / In Progress / Failed / Not Started
 	}
 }

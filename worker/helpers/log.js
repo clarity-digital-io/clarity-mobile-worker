@@ -8,33 +8,22 @@ const password = 'Clarity2020!hK0S8pi2pXOQ7tjsADGijhFV';
 
 export const log = async (jobId, result) => {
 
-	const { access_token } = await getAccessToken(result.organizationId);
+	const data = await getClientAccessToken(result.organizationId);
 	
-	const data = await getUser(access_token); 
-	const test = await updateJobInfo(data, jobId); 
+	const result = await updateJobInfo(data, jobId); 
 
 }
 
-const getAccessToken = async (organizationId) => {
+const getClientAccessToken = async (organizationId) => {
 
 	try {
 		const { data } = await axios.post(`https://test.salesforce.com/services/oauth2/token?grant_type=${grant_type}&client_id=${client_id}&client_secret=${client_secret}&username=${username}&password=${password}`);
-
 		const response = await axios.post(`${data.instance_url}/services/apexrest/Tokens/${organizationId}`, {}, { headers: { Authorization: "Bearer " + data.access_token } });
-
 		return response.data; 
 	} catch (error) {
 		console.log('error', error); 
 	}
 
-}
-
-const getUser = async (access_token) => {
-	//we can probably skip, get the real access token through a user agent flow step + refresh token
-	//https://help.salesforce.com/articleView?id=remoteaccess_oauth_user_agent_flow.htm&type=5
-	const { data } = await axios.post('https://clarity-api-auth.herokuapp.com/credentials', { 'idToken': access_token }, { 'Content-Type': 'application/json' });
-	return data;
-	
 }
 
 const updateJobInfo = async ({url, access_token}, jobId) => {
