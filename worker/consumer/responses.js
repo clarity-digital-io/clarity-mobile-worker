@@ -24,11 +24,11 @@ const sync = async (responses, organizationId) => {
 
 const updateResponses = async ({instance_url, access_token}, responses) => {
 	console.log('responses', responses); 
-	let prepped = JSON.stringify(JSON.parse(responses)); 
-	console.log('prepped', prepped); 
+	let prepped = JSON.parse(responses); 
+	prepped["attributes"] = { type: "Response__c" };
 
 	try {
-		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Responses`, { data: prepped }, { headers: { Authorization: "Bearer " + access_token } });
+		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Responses`, { data: JSON.stringify(prepped) }, { headers: { Authorization: "Bearer " + access_token } });
 		return response; 
 	} catch (error) {
 		if(error.response) {
