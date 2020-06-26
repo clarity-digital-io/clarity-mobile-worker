@@ -22,7 +22,7 @@ const sync = async (responses, organizationId) => {
 
 }
 
-const updateResponses = async ({instance_url, access_token}, responses) => {
+const updateResponses = async ({instance_url, access_token, refresh_token}, responses) => {
 	console.log('responses', responses); 
 
 	try {
