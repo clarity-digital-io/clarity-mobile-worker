@@ -28,7 +28,13 @@ const updateResponses = async ({instance_url, access_token}, responses) => {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Responses`, responses, { headers: { Authorization: "Bearer " + access_token } });
 		return response; 
 	} catch (error) {
-		console.log('error', error); 
+		if(error.response) {
+			console.log(error.response)
+		}
+
+		if(error.request) {
+			console.log(error.request)
+		}
 	}
 
 }
