@@ -28,9 +28,9 @@ function start() {
   responseQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
 	responseQueue.on('completed', (job, result) => log(job.id, result));
 
-	let responseQueue = new Queue('delete-responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  responseQueue.process(maxJobsPerWorker, async (job, done) => deleteResponses(job, done));
-	responseQueue.on('completed', (job, result) => log(job.id, result));
+	let deleteResponseQueue = new Queue('delete-responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  deleteResponseQueue.process(maxJobsPerWorker, async (job, done) => deleteResponses(job, done));
+	deleteResponseQueue.on('completed', (job, result) => log(job.id, result));
 
 }
 
