@@ -23,7 +23,7 @@ const sync = async (responses, organizationId) => {
 }
 
 const updateResponses = async ({instance_url, access_token, refresh_token}, responses) => {
-	console.log('responses', responses); 
+	console.log('responses0', responses); 
 
 	try {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Responses`, { data: responses }, { headers: { Authorization: "Bearer " + access_token } });
@@ -43,6 +43,7 @@ const updateResponses = async ({instance_url, access_token, refresh_token}, resp
 export const deleteResponses = async (job, done) => {
 	
 	const responseUUIDs = job.data.body;
+	console.log('responseUUIDs0', responseUUIDs)
 	const organizationId = job.data.organizationId;
 
 	const response = await deleteSync(responseUUIDs, organizationId);
