@@ -8,7 +8,7 @@ const password = 'Clarity2020!hK0S8pi2pXOQ7tjsADGijhFV';
 
 export const sendAnswers = async (job, done) => {
 	
-		const answers = job.data.answers;
+		const answers = job.data.body;
 		const organizationId = job.data.organizationId;
 
 		const response = await sync(answers, organizationId);
@@ -21,7 +21,7 @@ const sync = async (answers, organizationId) => {
 
 	const data = await getClientAccessToken(organizationId);
 	
-	const response = await updateAnswers(data, organizationId, answers); 
+	const response = await updateAnswers(data, answers); 
 
 	return response; 
 
@@ -41,7 +41,7 @@ const getClientAccessToken = async (organizationId) => {
 
 }
 
-const updateAnswers = async ({instance_url, access_token}, organizationId, answers) => {
+const updateAnswers = async ({instance_url, access_token}, answers) => {
 	console.log('answers', answers); 
 	try {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers`,  { body: answers }, { headers: { Authorization: "Bearer " + access_token } });
