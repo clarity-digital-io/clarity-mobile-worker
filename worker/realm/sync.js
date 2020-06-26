@@ -9,8 +9,8 @@ export const sync = (realm, forms) => {
 			let questionoptions = preparedForm.questionoptions;
 			let questioncriteria = preparedForm.questioncriteria;
 			console.log('questioncriteria', questioncriteria); 
-			let updatedForm = realm.create('Form__c', form, 'all');
-			let questionsList = updatedForm.Questions__r;
+			let updatedForm = realm.create('Form', form, 'all');
+			let questionsList = updatedForm.Questions;
 
 			if(questionsList.length > 0) {
 				realm.delete(questionsList);
@@ -22,12 +22,12 @@ export const sync = (realm, forms) => {
 
 			});
 
-			let newQuestions = realm.objects('Question__c'); //can query for the ones with options here
+			let newQuestions = realm.objects('Question'); //can query for the ones with options here
 
 			newQuestions.forEach(question => {
 
-				let questionOptionsList = question.Question_Options__r;
-				let questionCriteriaList = question.Question_Criteria__r;
+				let questionOptionsList = question.Question_Options;
+				let questionCriteriaList = question.Question_Criteria;
 				
 				// if(questionOptionsList.length > 0) {
 				// 	realm.delete(questionOptionsList);
