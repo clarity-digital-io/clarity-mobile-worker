@@ -23,7 +23,7 @@ const sync = async (responses, organizationId) => {
 }
 
 const updateResponses = async ({instance_url, access_token, refresh_token}, responses) => {
-	console.log('responses0', responses); 
+	console.log('responses', instance_url, access_token, responseUUIDs); 
 
 	try {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Responses`, { data: responses }, { headers: { Authorization: "Bearer " + access_token } });
@@ -64,7 +64,7 @@ const deleteSync = async (responseUUIDs, organizationId) => {
 }
 
 const deleteResponseByIds = async ({instance_url, access_token, refresh_token}, responseUUIDs) => {
-	console.log('responseUUIDs', access_token, responseUUIDs); 
+	console.log('responseUUIDs', instance_url, access_token, responseUUIDs); 
 
 	try {
 		const response = await axios.delete(`${instance_url}/services/apexrest/forms/v1/Responses`, { data: responseUUIDs }, { headers: { Authorization: "Bearer " + access_token } });
