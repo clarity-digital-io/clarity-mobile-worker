@@ -116,7 +116,7 @@ export const ResponseSchema = {
 		UUID: 'string',
 		Form: 'string',
 		OwnerId: 'string',
-		Answers: 'Answer[]',
+		Answers: 'Answer[]'
   },
 };
 
