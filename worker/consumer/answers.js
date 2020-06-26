@@ -12,7 +12,7 @@ export const sendAnswers = async (job, done) => {
 		const organizationId = job.data.organizationId;
 
 		const response = await sync(answers, organizationId);
-		console.log('response', response); 
+
 		done(null, { organizationId: organizationId });
 		
 }
@@ -47,7 +47,7 @@ const updateAnswers = async ({instance_url, access_token}, organizationId, answe
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers`,  { body: answers }, { headers: { Authorization: "Bearer " + access_token } });
 		return response; 
 	} catch (error) {
-		console.log('error', error); 
+		console.log('error'); 
 	}
 
 }
