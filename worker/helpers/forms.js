@@ -7,12 +7,12 @@ export const prepare = (salesforceForms) => {
 		let nForm = {
 			Id: form.Id,
 			Name: form.Name,
-			Title__c: form.forms__Title__c,
-			Status__c: form.forms__Status__c,
-			Multi_Page__c: form.forms__Multi_Page__c,
-			Multi_Page_Val__c: form.forms__Multi_Page_Val__c,
-			Multi_Page_Info__c: form.forms__Multi_Page_Info__c,
-			Description__c: form.forms__Description__c
+			Title: form.forms__Title__c,
+			Status: form.forms__Status__c,
+			Multi_Page: form.forms__Multi_Page__c,
+			Multi_Page_Val: form.forms__Multi_Page_Val__c,
+			Multi_Page_Info: form.forms__Multi_Page_Info__c,
+			Description: form.forms__Description__c
 		};
 
 		let nQuestionOptions = new Map();
@@ -25,8 +25,8 @@ export const prepare = (salesforceForms) => {
 					return {
 						Id: option.Id,
 						Name: option.Name,
-						Question__c: option.forms__Question__c,
-						Label__c: option.forms__Label__c
+						Question: option.forms__Question__c,
+						Label: option.forms__Label__c
 					}
 				});
 				nQuestionOptions.set(question.Id, options);
@@ -37,12 +37,12 @@ export const prepare = (salesforceForms) => {
 					return {
 						Id: criteria.Id,
 						Name: criteria.Name,
-						Question__c: criteria.forms__Question__c,
-						Field_Type__c: criteria.forms__Field_Type__c,
-						Field__c: criteria.forms__Field__c,
-						Operator__c: criteria.forms__Operator__c,
-						Type__c: criteria.forms__Type__c,
-						Value__c: criteria.forms__Value__c
+						Question: criteria.forms__Question__c,
+						Field_Type: criteria.forms__Field_Type__c,
+						Field: criteria.forms__Field__c,
+						Operator: criteria.forms__Operator__c,
+						Type: criteria.forms__Type__c,
+						Value: criteria.forms__Value__c
 					}
 				});
 				nQuestionCriteria.set(question.Id, criteria);
@@ -51,17 +51,17 @@ export const prepare = (salesforceForms) => {
 			return {
 				Id: question.Id,
 				Name: question.Name, 
-				Form__c: question.forms__Form__c,
-				Type__c: question.forms__Type__c,
-				FreeText_Type__c: question.forms__FreeText_Type__c,
-				Logic__c: question.forms__Logic__c,
-				Max_Length__c: question.forms__Max_Length__c,
-				Max_Range__c: question.forms__Max_Range__c,
-				Min_Range__c: question.forms__Min_Range__c,
-				Order__c: question.forms__Order__c,
-				Page__c: question.forms__Page__c,
-				Required__c: question.forms__Required__c,
-				Title__c: question.forms__Title__c,
+				Form: question.forms__Form__c,
+				Type: question.forms__Type__c,
+				FreeText_Type: question.forms__FreeText_Type__c,
+				Logic: question.forms__Logic__c,
+				Max_Length: question.forms__Max_Length__c,
+				Max_Range: question.forms__Max_Range__c,
+				Min_Range: question.forms__Min_Range__c,
+				Order: question.forms__Order__c,
+				Page: question.forms__Page__c,
+				Required: question.forms__Required__c,
+				Title: question.forms__Title__c,
 			}
 		});
 
