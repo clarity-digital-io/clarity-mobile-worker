@@ -24,7 +24,7 @@ const sync = async (responses, organizationId) => {
 
 const updateResponses = async ({instance_url, access_token}, responses) => {
 	console.log('responses', responses); 
-	let prepped = JSON.stringify(JSON.parse(JSON.parse(responses))); 
+	let prepped = JSON.stringify(JSON.parse(responses)); 
 
 	try {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Responses`, { data: prepped }, { headers: { Authorization: "Bearer " + access_token } });
