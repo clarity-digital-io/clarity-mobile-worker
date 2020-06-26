@@ -10,7 +10,7 @@ export const log = async (jobId, result) => {
 
 	const data = await getClientAccessToken(result.organizationId);
 	
-	const result = await updateJobInfo(data, jobId); 
+	const response = await updateJobInfo(data, jobId); 
 
 }
 
