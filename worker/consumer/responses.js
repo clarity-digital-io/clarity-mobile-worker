@@ -42,7 +42,7 @@ const updateResponses = async ({instance_url, access_token, refresh_token}, resp
 
 export const deleteResponses = async (job, done) => {
 	
-	const responses = job.data.body;
+	const responseUUIDs = job.data.body;
 	const organizationId = job.data.organizationId;
 
 	const response = await deleteSync(responseUUIDs, organizationId);
