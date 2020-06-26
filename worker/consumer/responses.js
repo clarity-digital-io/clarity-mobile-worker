@@ -27,6 +27,7 @@ const updateResponses = async ({instance_url, access_token, refresh_token}, resp
 
 	try {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Responses`, { data: responses }, { headers: { Authorization: "Bearer " + access_token } });
+		//on response we can update the sync status produce a new job for syncing
 		return response; 
 	} catch (error) {
 		if(error.response) {
@@ -70,11 +71,11 @@ const deleteResponseByIds = async ({instance_url, access_token, refresh_token}, 
 		return response; 
 	} catch (error) {
 		if(error.response) {
-			console.log('error.response', error.response); 
+			console.log('error.response delete'); 
 		}
 
 		if(error.request) {
-			console.log('error.request')
+			console.log('error.request delete')
 		}
 	}
 
