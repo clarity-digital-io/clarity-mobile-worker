@@ -3,7 +3,7 @@ import Queue from 'bull';
 import { log } from './helpers/log';
 import { connect } from './consumer/connect';
 import { sendAnswers } from './consumer/answers';
-import { sendResponses } from './consumer/responses';
+import { sendResponses, deleteResponses } from './consumer/responses';
 
 let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
