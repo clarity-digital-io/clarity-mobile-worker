@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getClientAccessToken } from '../helpers/access';
 
-export const sendResponses = (job, done) => {
+export const sendResponses = async (job, done) => {
 	
 	const responses = job.data.body;
 	const organizationId = job.data.organizationId;
