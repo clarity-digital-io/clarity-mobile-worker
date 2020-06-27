@@ -31,7 +31,8 @@ const updateResponses = async ({instance_url, access_token, refresh_token}, resp
 		return response; 
 	} catch (error) {
 		if(error.response) {
-			console.log('error.response', error.response); 
+			const { data } = error.response; 
+			console.log('data', data); 
 		}
 
 		if(error.request) {
@@ -76,7 +77,8 @@ const deleteResponseByIds = async ({instance_url, access_token, refresh_token}, 
 		return response; 
 	} catch (error) {
 		if(error.response) {
-			console.log('error.response delete', error.response); 
+			const { data } = error.response; 
+			console.log('data', data); 
 		}
 
 		if(error.request) {
