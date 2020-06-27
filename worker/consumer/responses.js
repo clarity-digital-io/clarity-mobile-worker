@@ -71,7 +71,7 @@ const deleteResponseByIds = async ({instance_url, access_token, refresh_token}, 
 		return response; 
 	} catch (error) {
 		if(error.response) {
-			console.log('error.response delete'); 
+			console.log('error.response delete', error.response); 
 		}
 
 		if(error.request) {
