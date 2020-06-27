@@ -2,9 +2,9 @@ import throng from 'throng';
 import Queue from 'bull';
 import { log } from './helpers/log';
 import { connect } from './consumer/connect';
+import { register } from './consumer/register';
 import { sendAnswers } from './consumer/answers';
 import { sendResponses, deleteResponses } from './consumer/responses';
-import { register } from './consumer/register';
 
 let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
@@ -25,10 +25,6 @@ function start() {
   registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
 	registerQueue.on('completed', (job, result) => log(job.id, result));
 
-	let answerQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  answerQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
-	answerQueue.on('completed', (job, result) => log(job.id, result));
-
 	let responseQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   responseQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
 	responseQueue.on('completed', (job, result) => log(job.id, result));
@@ -36,6 +32,14 @@ function start() {
 	let deleteResponseQueue = new Queue('delete-responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   deleteResponseQueue.process(maxJobsPerWorker, async (job, done) => deleteResponses(job, done));
 	deleteResponseQueue.on('completed', (job, result) => log(job.id, result));
+
+	let answerQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  answerQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
+	answerQueue.on('completed', (job, result) => log(job.id, result));
+
+	let answerQueue = new Queue('delete-answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  answerQueue.process(maxJobsPerWorker, async (job, done) => deleteAnswers(job, done));
+	answerQueue.on('completed', (job, result) => log(job.id, result));
 
 }
 
