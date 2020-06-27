@@ -67,7 +67,12 @@ const deleteResponseByIds = async ({instance_url, access_token, refresh_token}, 
 	console.log('responseUUIDs', instance_url, access_token, responseUUIDs); 
 
 	try {
-		const response = await axios.delete(`${instance_url}/services/apexrest/forms/v1/Responses`, { headers: { Authorization: "Bearer " + access_token } });
+		const response = axios.create({
+			baseURL: `${instance_url}/services/apexrest/forms/v1/Responses`,
+			method: 'delete',
+			headers: { Authorization: "Bearer " + access_token },
+			data: responseUUIDs
+		});
 		return response; 
 	} catch (error) {
 		if(error.response) {
