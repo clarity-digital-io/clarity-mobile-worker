@@ -4,6 +4,7 @@ import { log } from './helpers/log';
 import { connect } from './consumer/connect';
 import { sendAnswers } from './consumer/answers';
 import { sendResponses, deleteResponses } from './consumer/responses';
+import { register } from './consumer/register';
 
 let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
@@ -21,7 +22,7 @@ function start() {
 	connectQueue.on('completed', (job, result) => log(job.id, result));
 
 	let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  registerQueue.process(maxJobsPerWorker, async (job, done) => reg(job, done));
+  registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
 	registerQueue.on('completed', (job, result) => log(job.id, result));
 
 	let answerQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
