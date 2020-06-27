@@ -71,7 +71,7 @@ const deleteResponseByIds = async ({instance_url, access_token, refresh_token}, 
 			baseURL: `${instance_url}/services/apexrest/forms/v1/Responses`,
 			method: 'delete',
 			headers: { Authorization: "Bearer " + access_token },
-			data: responseUUIDs
+			data: { data: responseUUIDs }
 		});
 		return response; 
 	} catch (error) {
