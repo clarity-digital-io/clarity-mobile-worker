@@ -20,6 +20,10 @@ function start() {
   connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
 	connectQueue.on('completed', (job, result) => log(job.id, result));
 
+	let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  registerQueue.process(maxJobsPerWorker, async (job, done) => reg(job, done));
+	registerQueue.on('completed', (job, result) => log(job.id, result));
+
 	let answerQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   answerQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
 	answerQueue.on('completed', (job, result) => log(job.id, result));
