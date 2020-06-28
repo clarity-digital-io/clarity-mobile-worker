@@ -23,7 +23,7 @@ const sync = async (answers, organizationId) => {
 }
 
 const updateAnswers = async ({instance_url, access_token}, answers) => {
-	console.log('answers', answers[0]); 
+	console.log('answers', answers); 
 	try {
 		//const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers`, { data: answers }, { headers: { Authorization: "Bearer " + access_token } });
 		return response; 
