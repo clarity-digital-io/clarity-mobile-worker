@@ -27,7 +27,7 @@ const updateAnswers = async ({instance_url, access_token}, answers) => {
 	console.log('answers 0', a[0]); 
 	console.log('answers 1', a[0].ContentDocument); 
 
-	console.log('answers', JSON.parse(answers[0]).ContentDocument); 
+	console.log('answers', JSON.stringify( a[0].ContentDocument )); 
 	try {
 		//const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers`, { data: answers }, { headers: { Authorization: "Bearer " + access_token } });
 		return response; 
