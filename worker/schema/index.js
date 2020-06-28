@@ -126,12 +126,14 @@ export const AnswerSchema = {
 		Name: 'data?', 
 		IsAttachment: {type: 'bool', default: false},
 		Answer: {type: 'string', default: ''},
-		Response: 'string',
+		Base64: {type: 'string', default: ''},
+		FileLocation: {type: 'string', default: ''},
 		ContentDocument: {type: 'string', default: ''},
 		ContentVersion: {type: 'string', default: ''},
 		Date_Answer: {type: 'string', default: ''},
 		Record: {type: 'string', default: ''},
-		Question: 'string'
+		Question: 'string',
+		Response: 'string',
 	}
 }
 
