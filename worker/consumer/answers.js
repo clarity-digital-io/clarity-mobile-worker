@@ -32,8 +32,8 @@ const sync = async (body, organizationId) => {
 
 const filterAnswers = (body) => {
 	console.log('body', body); 
-	let answers = body.filter(ans => !ans.IsActive);
-	let attachments = body.filter(ans => ans.IsActive);
+	let answers = body.filter(ans => !ans.IsAttachment);
+	let attachments = body.filter(ans => ans.IsAttachment);
 	return [answers, attachments];
 }
 
