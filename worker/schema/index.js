@@ -123,9 +123,10 @@ export const AnswerSchema = {
 	primaryKey: 'UUID',
 	properties: {
 		UUID: 'string',
-		Name: 'data?', 
 		IsAttachment: {type: 'bool', default: false},
+		Name: {type: 'string', default: ''},
 		Answer: {type: 'string', default: ''},
+		Path: {type: 'string', default: ''},
 		Base64: {type: 'string', default: ''},
 		FileLocation: {type: 'string', default: ''},
 		ContentDocument: {type: 'string', default: ''},

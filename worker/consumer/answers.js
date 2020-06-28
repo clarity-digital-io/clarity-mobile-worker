@@ -58,19 +58,19 @@ const updateAnswers = async ({instance_url, access_token}, answers) => {
 
 const updateAttachments = async ({instance_url, access_token}, attachments) => {
 	console.log('attachments', attachments); 
-	// try {
-	// 	const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Attachments`, { data: attachments }, { headers: { Authorization: "Bearer " + access_token } });
-	// 	return response; 
-	// } catch (error) {
-	// 	if(error.response) {
-	// 		const { data } = error.response; 
-	// 		console.log('data', data); 
-	// 	}
+	try {
+		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Attachments`, { data: attachments }, { headers: { Authorization: "Bearer " + access_token } });
+		return response; 
+	} catch (error) {
+		if(error.response) {
+			const { data } = error.response; 
+			console.log('data', data); 
+		}
 
-	// 	if(error.request) {
-	// 		const { data } = error.request; 
-	// 		console.log('data', data); 
-	// 	}
-	// }
+		if(error.request) {
+			const { data } = error.request; 
+			console.log('data', data); 
+		}
+	}
 
 }
