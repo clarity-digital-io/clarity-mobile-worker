@@ -109,9 +109,7 @@ export const ResponseSchema = {
 	primaryKey: 'UUID',
   properties: {
 		UUID: 'string',
-		Id: 'string',
-		Name: 'string', 
-		Completion: 'bool',
+		Name: 'data?', 
 		Status: 'string',
 		Submitted_Date: 'data?', 
 		Form: 'string',
@@ -125,14 +123,13 @@ export const AnswerSchema = {
 	primaryKey: 'UUID',
 	properties: {
 		UUID: 'string',
-		Id: 'string',
-		Name: 'string', 
-		Answer: 'string',
+		Name: 'data?', 
+		Answer: 'data?',
 		Response: 'string',
-		ContentDocument: 'string',
-		ContentVersion: 'string',
-		Date_Answer: 'string',
-		Record: 'string',
+		ContentDocument: 'data?',
+		ContentVersion: 'data?',
+		Date_Answer: 'data?',
+		Record: 'data?',
 		Question: 'string'
 	}
 }
