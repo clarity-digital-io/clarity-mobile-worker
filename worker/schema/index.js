@@ -124,6 +124,7 @@ export const AnswerSchema = {
 	properties: {
 		UUID: 'string',
 		Name: 'data?', 
+		IsAttachment: {type: 'bool', default: false},
 		Answer: {type: 'string', default: ''},
 		Response: 'string',
 		ContentDocument: {type: 'string', default: ''},
