@@ -124,10 +124,10 @@ export const AnswerSchema = {
 	properties: {
 		UUID: 'string',
 		Name: 'data?', 
-		Answer: 'data?',
+		Answer: 'string',
 		Response: 'string',
-		ContentDocument: 'data?',
-		ContentVersion: 'data?',
+		ContentDocument: 'string',
+		ContentVersion: 'string',
 		Date_Answer: 'data?',
 		Record: 'data?',
 		Question: 'string'
