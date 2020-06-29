@@ -40,7 +40,7 @@ const filterAnswers = (body) => {
 const updateAnswers = async ({instance_url, access_token}, answers) => {
 
 	try {
-		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers`, { data: answers }, { headers: { Authorization: "Bearer " + access_token } });
+		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Answers`, { data: JSON.stringify(answers) }, { headers: { Authorization: "Bearer " + access_token } });
 		return response; 
 	} catch (error) {
 		if(error.response) {
@@ -59,7 +59,7 @@ const updateAnswers = async ({instance_url, access_token}, answers) => {
 const updateAttachments = async ({instance_url, access_token}, attachments) => {
 
 	try {
-		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Attachments`, { data: JSON.stringify(attachments) }, { headers: { Authorization: "Bearer " + access_token } });
+		const { data } = await axios.post(`${instance_url}/services/apexrest/forms/v1/Attachments`, { data: JSON.stringify(attachments) }, { headers: { Authorization: "Bearer " + access_token } });
 		console.log('response', response); 
 
 		return response; 
