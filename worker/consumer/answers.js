@@ -57,9 +57,11 @@ const updateAnswers = async ({instance_url, access_token}, answers) => {
 }
 
 const updateAttachments = async ({instance_url, access_token}, attachments) => {
-	console.log('attachments', attachments); 
+
 	try {
 		const response = await axios.post(`${instance_url}/services/apexrest/forms/v1/Attachments`, { data: JSON.stringify(attachments) }, { headers: { Authorization: "Bearer " + access_token } });
+		console.log('response', response); 
+
 		return response; 
 	} catch (error) {
 		if(error.response) {
