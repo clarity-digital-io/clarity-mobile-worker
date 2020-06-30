@@ -25,9 +25,9 @@ function start() {
   registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
 	registerQueue.on('completed', (job, result) => log(job.id, result));
 
-	let registerQueue = new Queue('user-sf-sync', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
-	registerQueue.on('completed', (job, result) => log(job.id, result));
+	let recordsQueue = new Queue('user-sf-sync', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  recordsQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
+	recordsQueue.on('completed', (job, result) => log(job.id, result));
 
 	let responseQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   responseQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
