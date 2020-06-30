@@ -36,9 +36,9 @@ export const FormConnectionFieldSchema = {
 		Name: 'string',
 		Form_Connection: 'string',
 		Question: 'string',
-		Custom_Value: 'string',
-		PreFill: 'string',
-		Salesforce_Field: 'string'
+		Custom_Value: 'data?',
+		PreFill: 'data?',
+		Salesforce_Field: 'data?',
 	}
 }
 
