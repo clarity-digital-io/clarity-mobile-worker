@@ -5,6 +5,7 @@ import { connect } from './consumer/connect';
 import { register } from './consumer/register';
 import { sendAnswers } from './consumer/answers';
 import { sendResponses, deleteResponses } from './consumer/responses';
+import { sfsync } from './consumer/sfsync';
 
 let PORT = '19499';
 let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
@@ -26,7 +27,7 @@ function start() {
 	registerQueue.on('completed', (job, result) => log(job.id, result));
 
 	let recordsQueue = new Queue('user-sf-sync', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  recordsQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
+  recordsQueue.process(maxJobsPerWorker, async (job, done) => sfsync(job, done));
 	recordsQueue.on('completed', (job, result) => log(job.id, result));
 
 	let responseQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
