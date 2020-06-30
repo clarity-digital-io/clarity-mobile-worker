@@ -1,5 +1,5 @@
 import Realm from 'realm';
-import { ResponseSchema, AnswerSchema } from '../schema'; 
+import { ResponseSchema, AnswerSchema, sObjectSchema } from '../schema'; 
 
 const SERVER_URL = 'https://forms-dev.us1a.cloud.realm.io';
 const REALM_URL = 'realms://forms-dev.us1a.cloud.realm.io';
