@@ -8,10 +8,15 @@ export const sync = (realm, forms) => {
 			let questions = preparedForm.questions;
 			let questionoptions = preparedForm.questionoptions;
 			let questioncriteria = preparedForm.questioncriteria;
-			console.log('questioncriteria', questioncriteria); 
+			let connections = preparedForm.connections;
+
 			let updatedForm = realm.create('Form', form, 'all');
 			let questionsList = updatedForm.Questions;
-
+			let connectionsList = updatedForm.Form_Connections;
+			
+			/**
+			 * Insert Questions / Question Options / Question Criteria
+			 */
 			if(questionsList.length > 0) {
 				realm.delete(questionsList);
 			}
@@ -49,6 +54,19 @@ export const sync = (realm, forms) => {
 					questionCriteriaList.push(criteria); 
 				});
 	
+			});
+
+			/**
+			 * Insert Connections / Connection Fields
+			 */
+			if(connectionsList.length > 0) {
+				realm.delete(questionsList);
+			}
+			
+			connections.forEach(connection => {
+
+				connectionsList.push(connection); 
+
 			});
 
 		});

@@ -10,7 +10,8 @@ export const FormSchema = {
 		Multi_Page: {type: 'bool', default: false},
 		Multi_Page_Val: {type: 'bool', default: false},
 		Multi_Page_Info: {type: 'string', default: ''},
-		Questions: 'Question[]'
+		Questions: 'Question[]',
+		Form_Connections: 'Form_Connection[]'
   },
 };
 
