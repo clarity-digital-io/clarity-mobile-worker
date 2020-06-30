@@ -36,8 +36,6 @@ const openUserRealms = async (salesforceRecords, userId) => {
 		console.log('error', error);
 	}
 
-	return userRealms;
-
 }
 
 const prepare = (salesforceRecords) => {
