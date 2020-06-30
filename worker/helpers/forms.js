@@ -2,7 +2,7 @@ export const prepare = (salesforceForms) => {
 
 	const forms = salesforceForms.reduce((accum, obj) => {
 
-		let { form, questions } = obj;
+		let { form, questions, connections } = obj;
 
 		let nForm = {
 			Id: form.Id,
@@ -17,6 +17,7 @@ export const prepare = (salesforceForms) => {
 
 		let nQuestionOptions = new Map();
 		let nQuestionCriteria = new Map();
+		let nConnectionFields = new Map();
 		
 		let nQuestions = questions.map(question => {
 
@@ -63,6 +64,36 @@ export const prepare = (salesforceForms) => {
 				Required: question.forms__Required__c,
 				Title: question.forms__Title__c,
 			}
+
+		});
+
+		let nConnections = connections.map(connection => {
+
+			if(connection.hasOwnProperty('forms__Form_Connection_Fields__r')) {
+				let fields = connection.forms__Form_Connection_Fields__r.records.map(field => {
+					return {
+						Id : field.Id,
+						Name : field.Name,
+						Form_Connection : field.forms__Form_Connection__c,
+						Question : field.forms__Question__c,
+						Custom_Value : field.forms__Custom_Value__c,
+						PreFill : field.forms__PreFill__c,
+						Salesforce_Field : field.forms__Salesforce_Field__c
+					}
+				});
+				nConnectionFields.set(connection.Id, fields);
+			}
+
+			return {
+				Id: connection.Id,
+				Name: connection.Name, 
+				Form: connection.forms__Form__c,
+				New: connection.forms__New__c,
+				Result_Holder: connection.forms__Result_Holder__c,
+				Salesforce_Object: connection.forms__Salesforce_Object__c,
+				Type: connection.forms__Type__c,
+			}
+
 		});
 
 		let preparedForm = {}; 
@@ -71,6 +102,8 @@ export const prepare = (salesforceForms) => {
 		preparedForm['questions'] = nQuestions; 
 		preparedForm['questionoptions'] = nQuestionOptions; 
 		preparedForm['questioncriteria'] = nQuestionCriteria; 
+		preparedForm['connections'] = nConnections; 
+		preparedForm['connectionfields'] = nConnectionFields; 
 
 		accum = accum.concat(preparedForm);
 		return accum; 

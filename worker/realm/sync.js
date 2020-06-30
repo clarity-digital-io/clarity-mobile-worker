@@ -9,6 +9,7 @@ export const sync = (realm, forms) => {
 			let questionoptions = preparedForm.questionoptions;
 			let questioncriteria = preparedForm.questioncriteria;
 			let connections = preparedForm.connections;
+			let connectionFields = preparedForm.connectionfields;
 
 			let updatedForm = realm.create('Form', form, 'all');
 			let questionsList = updatedForm.Questions;
@@ -68,6 +69,22 @@ export const sync = (realm, forms) => {
 				connectionsList.push(connection); 
 
 			});
+
+			let newConnections = realm.objects('Form_Connection'); //can query for the ones with options here
+
+			newConnections.forEach(connectionFields => {
+
+				let connectionFieldsList = connection.Form_Connection_Fields;
+
+				let actualConnectionFields = connectionFields.has(connectionFields.Id) ? connectionFields.get(connectionFields.Id) : [];
+				
+				actualConnectionFields.forEach(field => {
+					connectionFieldsList.push(field); 
+				});
+
+	
+			});
+
 
 		});
 
