@@ -22,7 +22,6 @@ export const FormConnectionSchema = {
 		Id: 'string',
 		Name: 'string',
 		New: 'bool',
-		Result_Holder: 'string',
 		Salesforce_Object: 'string',
 		Type: 'string',
 		Form_Connection_Fields: 'Form_Connection_Field[]'

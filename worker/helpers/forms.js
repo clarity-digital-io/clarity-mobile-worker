@@ -89,7 +89,6 @@ export const prepare = (salesforceForms) => {
 				Name: connection.Name, 
 				Form: connection.forms__Form__c,
 				New: connection.forms__New__c,
-				Result_Holder: connection.forms__Result_Holder__c,
 				Salesforce_Object: connection.forms__Salesforce_Object__c,
 				Type: connection.forms__Type__c,
 			}
