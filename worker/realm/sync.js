@@ -61,7 +61,7 @@ export const sync = (realm, forms) => {
 			 * Insert Connections / Connection Fields
 			 */
 			if(connectionsList.length > 0) {
-				realm.delete(questionsList);
+				realm.delete(connectionsList);
 			}
 			
 			connections.forEach(connection => {
@@ -72,11 +72,11 @@ export const sync = (realm, forms) => {
 
 			let newConnections = realm.objects('Form_Connection'); //can query for the ones with options here
 
-			newConnections.forEach(connectionFields => {
+			newConnections.forEach(connection => {
 
 				let connectionFieldsList = connection.Form_Connection_Fields;
 
-				let actualConnectionFields = connectionFields.has(connectionFields.Id) ? connectionFields.get(connectionFields.Id) : [];
+				let actualConnectionFields = connectionFields.has(connection.Id) ? connectionFields.get(connection.Id) : [];
 				
 				actualConnectionFields.forEach(field => {
 					connectionFieldsList.push(field); 
