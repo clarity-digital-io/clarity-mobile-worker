@@ -109,7 +109,7 @@ export const ResponseSchema = {
 	primaryKey: 'UUID',
   properties: {
 		UUID: 'string',
-		Name: 'data?', 
+		Name: 'string', 
 		Status: 'string',
 		Submitted_Date: 'data?', 
 		Form: 'string',
