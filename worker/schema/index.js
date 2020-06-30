@@ -37,7 +37,7 @@ export const FormConnectionFieldSchema = {
 		Form_Connection: 'string',
 		Question: 'string',
 		Custom_Value: 'data?',
-		PreFill: 'data?',
+		PreFill: 'bool',
 		Salesforce_Field: 'data?',
 	}
 }
