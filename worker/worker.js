@@ -7,8 +7,8 @@ import { sendAnswers } from './consumer/answers';
 import { sendResponses, deleteResponses } from './consumer/responses';
 import { sfsync } from './consumer/sfsync';
 
-let PORT = '19499';
-let HOST = 'ec2-52-202-160-22.compute-1.amazonaws.com';
+let PORT = '22829';
+let HOST = 'ec2-54-87-144-92.compute-1.amazonaws.com';
 let PASSWORD = 'p2be04e53cb71f4970daa5e90bc1f15f0c2086fd2850609eef7c057babf2051aa';
 
 let workers = process.env.WEB_CONCURRENCY || 1;
