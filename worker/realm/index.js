@@ -7,7 +7,7 @@ const REALM_URL = 'realms://forms-dev.us1a.cloud.realm.io';
 export const openRealm = async (organizationId) => {
 
 	try {
-
+		console.log('openRealm')
 		const adminUser = await Realm.Sync.User.login(SERVER_URL, Realm.Sync.Credentials.nickname('realm-admin', true));
 		const config = { 	
 			sync: { 
