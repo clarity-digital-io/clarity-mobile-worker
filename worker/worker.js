@@ -13,7 +13,7 @@ let PASSWORD = 'p2be04e53cb71f4970daa5e90bc1f15f0c2086fd2850609eef7c057babf2051a
 
 let workers = process.env.WEB_CONCURRENCY || 1;
 
-let maxJobsPerWorker = 1;
+let maxJobsPerWorker = 2;
 
 function start() {
 	//with more queues we can loop through these for failed completed stalled and process
