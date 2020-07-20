@@ -21,6 +21,7 @@ function start() {
 	console.log('start')
 	try {
 		let connectQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+		console.log('connectQueue', connectQueue); 
 		connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
 		connectQueue.on('completed', (job, result) => log(job.id, result));
 		connectQueue.close();
