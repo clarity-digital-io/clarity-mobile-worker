@@ -4,9 +4,9 @@ import { getClientAccessToken } from './access';
 
 export const log = async (jobId, result) => {
 
-	const data = await getClientAccessToken(result.organizationId);
+	//const data = await getClientAccessToken(result.organizationId);
 	
-	const response = await updateJobInfo(data, jobId); 
+	//const response = await updateJobInfo(data, jobId); 
 
 }
 
