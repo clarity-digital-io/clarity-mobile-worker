@@ -18,6 +18,7 @@ let maxJobsPerWorker = 2;
 function start() {
 	//with more queues we can loop through these for failed completed stalled and process
 	//maybe separate by orgid + Connect or an extra identifier
+	console.log('start')
 	let connectQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
 	connectQueue.on('completed', (job, result) => log(job.id, result));
