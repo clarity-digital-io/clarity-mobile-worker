@@ -10,6 +10,7 @@ export const FormSchema = {
 		Multi_Page: {type: 'bool', default: false},
 		Multi_Page_Val: {type: 'bool', default: false},
 		Multi_Page_Info: {type: 'string', default: ''},
+		ChecklistGroup: 'data?',
 		Questions: 'Question[]',
 		Form_Connections: 'Form_Connection[]'
   },
@@ -21,6 +22,7 @@ export const FormConnectionSchema = {
 	properties: {
 		Id: 'string',
 		Name: 'string',
+		Form: 'string',
 		New: 'bool',
 		Salesforce_Object: 'string',
 		Type: 'string',
@@ -114,6 +116,7 @@ export const ResponseSchema = {
 		Submitted_Date: 'data?', 
 		Form: 'string',
 		OwnerId: 'string',
+		Checklist: 'data?',
 		Answers: 'Answer[]'
   },
 };
@@ -155,11 +158,35 @@ export const ProfileSchema = {
 	name: 'Profile',
 	primaryKey: 'Id', //userId
 	properties: {
-		id: 'string',
-		email: 'string', 
-		full_name: 'string',
-		avatar: 'string',
-		last_sync: 'date',
-		sync_status: 'string' //Complete / Requested / In Progress / Failed / Not Started
+		Id: 'string',
+		Email: 'string', 
+		FullName: 'string',
+		Avatar: 'string',
+		LastSync: 'date',
+		SyncStatus: 'string' //Complete / Requested / In Progress / Failed / Not Started
+	}
+}
+
+//checklist groups
+export const ChecklistGroupSchema = {
+	name: 'ChecklistGroup',
+	primaryKey: 'Id', //userId
+	properties: {
+		Id: 'string',
+		Name: 'string', 
+		Standard: {type: 'bool', default: false}
+	}
+}
+
+//checklist 
+export const ChecklistSchema = {
+	name: 'Checklist',
+	primaryKey: 'Id', //userId
+	properties: {
+		Id: 'string',
+		ChecklistGroup: 'string', 
+		sObject: 'string',
+		RecordId: 'string',
+		Status: 'date'
 	}
 }
