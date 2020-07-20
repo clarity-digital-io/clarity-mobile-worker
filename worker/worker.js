@@ -13,7 +13,7 @@ let PASSWORD = 'p2be04e53cb71f4970daa5e90bc1f15f0c2086fd2850609eef7c057babf2051a
 
 let workers = process.env.WEB_CONCURRENCY || 1;
 
-let maxJobsPerWorker = 50;
+let maxJobsPerWorker = 1;
 
 function start() {
 	//with more queues we can loop through these for failed completed stalled and process
@@ -21,6 +21,7 @@ function start() {
 	let connectQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
 	connectQueue.on('completed', (job, result) => log(job.id, result));
+	connectQueue.close();
 
 	let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
