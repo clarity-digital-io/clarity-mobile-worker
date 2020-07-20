@@ -1,4 +1,4 @@
-export const sync = (realm, forms, groups) => {
+export const sync = (realm, forms) => {
 
 	realm.write(() => {
 
@@ -87,11 +87,11 @@ export const sync = (realm, forms, groups) => {
 
 		});
 
-		groups.forEach(group => {
+		// groups.forEach(group => {
 			
-			realm.create('ChecklistGroup', group, 'all');
+		// 	realm.create('ChecklistGroup', group, 'all');
 
-		})
+		// })
 
 	});
 
