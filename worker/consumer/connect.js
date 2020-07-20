@@ -9,7 +9,7 @@ export const connect = async (job, done) => {
 		const forms = prepare(job.data.forms); 
 
 		const groups = prepareGroups(job.data.groups); 
-
+		console.log('groups',groups);
 		sync(realm, forms, groups);
 
 		realm.close(); 
