@@ -25,26 +25,26 @@ function start() {
 	connectQueue.on('completed', (job, result) => log(job.id, result));
 	connectQueue.close();
 
-	// let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-	// registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
-	// registerQueue.on('completed', (job, result) => log(job.id, result));
+	let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+	registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
+	registerQueue.on('completed', (job, result) => log(job.id, result));
 
-	// let recordsQueue = new Queue('user-sf-sync', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-	// recordsQueue.process(maxJobsPerWorker, async (job, done) => sfsync(job, done));
-	// recordsQueue.on('completed', (job, result) => log(job.id, result));
+	let recordsQueue = new Queue('user-sf-sync', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+	recordsQueue.process(maxJobsPerWorker, async (job, done) => sfsync(job, done));
+	recordsQueue.on('completed', (job, result) => log(job.id, result));
 
-	// let responseQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-	// responseQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
-	// responseQueue.on('completed', (job, result) => log(job.id, result));
+	let responseQueue = new Queue('responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+	responseQueue.process(maxJobsPerWorker, async (job, done) => sendResponses(job, done));
+	responseQueue.on('completed', (job, result) => log(job.id, result));
 
-	// let deleteResponseQueue = new Queue('delete-responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-	// deleteResponseQueue.process(maxJobsPerWorker, async (job, done) => deleteResponses(job, done));
-	// deleteResponseQueue.on('completed', (job, result) => log(job.id, result));
+	let deleteResponseQueue = new Queue('delete-responses', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+	deleteResponseQueue.process(maxJobsPerWorker, async (job, done) => deleteResponses(job, done));
+	deleteResponseQueue.on('completed', (job, result) => log(job.id, result));
 
-	// let answerQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-	// answerQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
-	// answerQueue.on('completed', (job, result) => log(job.id, result));
-
+	let answerQueue = new Queue('answers', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+	answerQueue.process(maxJobsPerWorker, async (job, done) => sendAnswers(job, done));
+	answerQueue.on('completed', (job, result) => log(job.id, result));
+	
 }
 
 throng({ workers, start });
