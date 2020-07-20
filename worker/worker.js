@@ -23,6 +23,7 @@ function start() {
 	console.log('connectQueue', connectQueue); 
 	connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
 	connectQueue.on('completed', (job, result) => log(job.id, result));
+	connectQueue.on('error', (error) => console.log('error', error)); 
 	connectQueue.close();
 
 	let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
