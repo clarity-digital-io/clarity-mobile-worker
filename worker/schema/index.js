@@ -73,7 +73,7 @@ export const QuestionSchema = {
 		Salesforce_Object: 'data?',
 		Logic: {type: 'string', default: ''},
 		FreeText_Type: {type: 'string', default: ''},
-		Record_Group: 'data?',
+		Record_Group: 'string?',
 		Prefill_Type: 'data?',
 		Question_Options: 'Question_Option[]',
 		Question_Criteria: 'Question_Criteria[]'
