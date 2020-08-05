@@ -187,6 +187,6 @@ export const ChecklistSchema = {
 		ChecklistGroup: 'string', 
 		sObject: 'string',
 		RecordId: 'string',
-		Status: 'date'
+		Status: 'string'
 	}
 }

@@ -2,6 +2,7 @@ import throng from 'throng';
 import Queue from 'bull';
 import { log } from './helpers/log';
 import { connect } from './consumer/connect';
+import { forms } from './consumer/forms';
 import { register } from './consumer/register';
 import { sendAnswers } from './consumer/answers';
 import { sendResponses, deleteResponses } from './consumer/responses';
@@ -20,6 +21,10 @@ function start() {
 	//maybe separate by orgid + Connect or an extra identifier
 	let connectQueue = new Queue('connect', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
+	connectQueue.on('completed', (job, result) => log(job.id, result));
+
+	let connectQueue = new Queue('forms', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  connectQueue.process(maxJobsPerWorker, async (job, done) => forms(job, done));
 	connectQueue.on('completed', (job, result) => log(job.id, result));
 
 	let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
