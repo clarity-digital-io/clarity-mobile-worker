@@ -23,9 +23,9 @@ function start() {
   connectQueue.process(maxJobsPerWorker, async (job, done) => connect(job, done));
 	connectQueue.on('completed', (job, result) => log(job.id, result));
 
-	let connectQueue = new Queue('forms', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
-  connectQueue.process(maxJobsPerWorker, async (job, done) => forms(job, done));
-	connectQueue.on('completed', (job, result) => log(job.id, result));
+	let formsQueue = new Queue('forms', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
+  formsQueue.process(maxJobsPerWorker, async (job, done) => forms(job, done));
+	formsQueue.on('completed', (job, result) => log(job.id, result));
 
 	let registerQueue = new Queue('register', {redis: {port: PORT, host: HOST, password: PASSWORD }}); 
   registerQueue.process(maxJobsPerWorker, async (job, done) => register(job, done));
