@@ -60,7 +60,7 @@ export const QuestionSchema = {
 		Id: 'string',
 		Name: 'string',
     Form: 'string',
-		Title: 'string',
+		Title: 'string?',
 		Type: 'string',
     Order: {type: 'int', default: 0},
     Lookup: 'data?',
