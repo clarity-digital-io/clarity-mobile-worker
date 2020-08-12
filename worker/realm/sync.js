@@ -46,13 +46,17 @@ export const sync = (realm, forms, groups) => {
 				let actualQuestionOptions = questionoptions.has(question.Id) ? questionoptions.get(question.Id) : [];
 				
 				actualQuestionOptions.forEach(option => {
-					questionOptionsList.push(option); 
+					//questionOptionsList.push(option); 
+					realm.create('Question_Option', option, 'all');
+
 				});
 
 				let actualQuestionCriteria = questioncriteria.has(question.Id) ? questioncriteria.get(question.Id) : [];
 
 				actualQuestionCriteria.forEach(criteria => {
-					questionCriteriaList.push(criteria); 
+					//questionCriteriaList.push(criteria); 
+					realm.create('Question_Criteria', criteria, 'all');
+
 				});
 	
 			});
