@@ -29,7 +29,7 @@ export const sync = (realm, forms, groups, syncForm) => {
 			});
 
 			//need to get only questions with the form we are updating with it's a form sync
-			let newQuestions = realm.objects('Question').filtered('Form == $0', preparedForm.Id); //can query for the ones with options here
+			let newQuestions = realm.objects('Question');//.filtered('Form == $0', preparedForm.Id); //can query for the ones with options here
 			console.log('newQuestions', newQuestions); 
 			newQuestions.forEach(question => {
 
