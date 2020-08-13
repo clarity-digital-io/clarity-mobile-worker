@@ -37,6 +37,8 @@ export const sync = (realm, forms, groups, syncForm) => {
 				let questionCriteriaList = question.Question_Criteria;
 				
 				if(questionOptionsList.length > 0) {
+					console.log('questionOptionsList', questionOptionsList);
+
 					realm.delete(questionOptionsList);
 				}
 
