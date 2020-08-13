@@ -8,7 +8,9 @@ export const forms = async (job, done) => {
 	
 		const forms = prepare(job.data.forms); 
 
-		sync(realm, forms, []);
+		let syncForm = true; 
+
+		sync(realm, forms, [], syncForm);
 
 		realm.close(); 
 

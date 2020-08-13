@@ -1,4 +1,4 @@
-export const sync = (realm, forms, groups) => {
+export const sync = (realm, forms, groups, syncForm) => {
 
 	realm.write(() => {
 
@@ -28,7 +28,8 @@ export const sync = (realm, forms, groups) => {
 
 			});
 
-			let newQuestions = realm.objects('Question'); //can query for the ones with options here
+			//need to get only questions with the form we are updating with it's a form sync
+			let newQuestions = realm.objects('Question').filtered('Form == $0', preparedForm.Id); //can query for the ones with options here
 
 			newQuestions.forEach(question => {
 
@@ -44,20 +45,15 @@ export const sync = (realm, forms, groups) => {
 				}
 
 				let actualQuestionOptions = questionoptions.has(question.Id) ? questionoptions.get(question.Id) : [];
-				
+				console.log('actualQuestionOptions', actualQuestionOptions);
 				actualQuestionOptions.forEach(option => {
-					//questionOptionsList.push(option); 
-					console.log('option', option); 
-					realm.create('Question_Option', option, 'all');
-
+					questionOptionsList.push(option); 
 				});
 
 				let actualQuestionCriteria = questioncriteria.has(question.Id) ? questioncriteria.get(question.Id) : [];
 
 				actualQuestionCriteria.forEach(criteria => {
-					//questionCriteriaList.push(criteria); 
-					realm.create('Question_Criteria', criteria, 'all');
-
+					questionCriteriaList.push(criteria)
 				});
 	
 			});
