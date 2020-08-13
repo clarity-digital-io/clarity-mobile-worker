@@ -28,26 +28,17 @@ export const sync = (realm, forms, groups, syncForm) => {
 
 			});
 
-			let newQuestions1 = realm.objects('Question').filtered('Form == $0', preparedForm.Id);
-
 			//need to get only questions with the form we are updating with it's a form sync
-			let newQuestions = realm.objects('Question');//.filtered('Form == $0', preparedForm.Id); //can query for the ones with options here
+			let newQuestions = realm.objects('Question').filtered('Form == $0', preparedForm.form.Id); //can query for the ones with options here
 
 			newQuestions.forEach(question => {
 
 				let questionOptionsList = question.Question_Options;
 				let questionCriteriaList = question.Question_Criteria;
 				
-				console.log('questionOptionsList WHY 0000', JSON.stringify(questionOptionsList), questionOptionsList.length);
-
-				//if(questionOptionsList.length > 0) {
-					console.log('!!!!!!!');
-
-					realm.delete(questionOptionsList);
-
-					console.log('questionOptionsList', questionOptionsList); 
-					
-			//	}
+				if(questionOptionsList.length > 0) {
+					realm.delete(questionOptionsList);					
+			}
 
 				if(questionCriteriaList.length > 0) {
 					realm.delete(questionCriteriaList);
@@ -55,9 +46,6 @@ export const sync = (realm, forms, groups, syncForm) => {
 
 				let actualQuestionOptions = questionoptions.has(question.Id) ? questionoptions.get(question.Id) : [];
 				actualQuestionOptions.forEach(option => {
-					console.log('questionOptionsList', JSON.stringify(questionOptionsList), questionOptionsList.length);
-					console.log('option', option);
-					//need to check if questionOptionsList already has the same id repace with new
 					questionOptionsList.push(option); 
 				});
 
