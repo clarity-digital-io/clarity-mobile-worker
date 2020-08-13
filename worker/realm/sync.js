@@ -43,16 +43,14 @@ export const sync = (realm, forms, groups, syncForm) => {
 				//if(questionOptionsList.length > 0) {
 					console.log('!!!!!!!');
 
-					questionOptionsList = realm.delete(questionOptionsList);
+					realm.delete(questionOptionsList);
 
-					console.log('question.Question_Options', JSON.stringify(question.Question_Options)); 
-
-					questionOptionsList = question.Question_Options; 
-
+					console.log('questionOptionsList', questionOptionsList); 
+					
 			//	}
 
 				if(questionCriteriaList.length > 0) {
-					questionCriteriaList = realm.delete(questionCriteriaList);
+					realm.delete(questionCriteriaList);
 				}
 
 				let actualQuestionOptions = questionoptions.has(question.Id) ? questionoptions.get(question.Id) : [];
