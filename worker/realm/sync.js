@@ -38,7 +38,7 @@ export const sync = (realm, forms, groups, syncForm) => {
 				let questionOptionsList = question.Question_Options;
 				let questionCriteriaList = question.Question_Criteria;
 				
-				console.log('questionOptionsList', questionOptionsList.length);
+				console.log('questionOptionsList WHY 0000', questionOptionsList.length);
 
 				if(questionOptionsList.length > 0) {
 					console.log('!!!!!!!');
