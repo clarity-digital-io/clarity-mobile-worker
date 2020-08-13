@@ -47,6 +47,7 @@ export const sync = (realm, forms, groups) => {
 				
 				actualQuestionOptions.forEach(option => {
 					//questionOptionsList.push(option); 
+					console.log('option', option); 
 					realm.create('Question_Option', option, 'all');
 
 				});
