@@ -40,6 +40,8 @@ export const sync = (realm, forms, groups, syncForm) => {
 				let questionOptionsList = question.Question_Options;
 				let questionCriteriaList = question.Question_Criteria;
 				
+				console.log('questionOptionsList', questionOptionsList.length);
+
 				if(questionOptionsList.length > 0) {
 					console.log('!!!!!!!');
 
@@ -56,7 +58,6 @@ export const sync = (realm, forms, groups, syncForm) => {
 				}
 
 				let actualQuestionOptions = questionoptions.has(question.Id) ? questionoptions.get(question.Id) : [];
-				console.log('actualQuestionOptions', actualQuestionOptions);
 				actualQuestionOptions.forEach(option => {
 					console.log('questionOptionsList', JSON.stringify(questionOptionsList), questionOptionsList.length);
 					console.log('option', option);
