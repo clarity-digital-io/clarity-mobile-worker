@@ -53,7 +53,7 @@ export const sync = (realm, forms, groups, syncForm) => {
 				let actualQuestionOptions = questionoptions.has(question.Id) ? questionoptions.get(question.Id) : [];
 				console.log('actualQuestionOptions', actualQuestionOptions);
 				actualQuestionOptions.forEach(option => {
-					console.log('questionOptionsList', questionOptionsList);
+					console.log('questionOptionsList', JSON.stringify(questionOptionsList));
 					console.log('option', option);
 					questionOptionsList.push(option); 
 				});
