@@ -53,8 +53,9 @@ export const sync = (realm, forms, groups, syncForm) => {
 				let actualQuestionOptions = questionoptions.has(question.Id) ? questionoptions.get(question.Id) : [];
 				console.log('actualQuestionOptions', actualQuestionOptions);
 				actualQuestionOptions.forEach(option => {
-					console.log('questionOptionsList', JSON.stringify(questionOptionsList));
+					console.log('questionOptionsList', JSON.stringify(questionOptionsList), questionOptionsList.length);
 					console.log('option', option);
+					//need to check if questionOptionsList already has the same id repace with new
 					questionOptionsList.push(option); 
 				});
 
