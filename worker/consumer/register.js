@@ -5,7 +5,7 @@ const SERVER_URL = 'https://forms-dev.us1a.cloud.realm.io';
 const REALM_URL = 'realms://forms-dev.us1a.cloud.realm.io';
 
 export const register = async (job, done) => {
-
+		console.log('job', job.data);
 		const userRealms = await openUserRealms(job.data.organizationId, job.data.users);
 	
 		done(null, { organizationId: job.data.organizationId, userRealms: userRealms });
