@@ -7,7 +7,7 @@ const REALM_URL = 'realms://forms-dev.us1a.cloud.realm.io';
 export const sfsync = async (job, done) => {
 
 	const salesforceRecords = prepare(job.data.sobjects); 
-
+	console.log('salesforcerecords', salesforceRecords); 
 	await openUserRealms(salesforceRecords, job.data.userId);
 
 	done(null, { userId: job.data.userId });
