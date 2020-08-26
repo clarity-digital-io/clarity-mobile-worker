@@ -64,7 +64,8 @@ export const prepare = (salesforceForms) => {
 				Page: question.forms__Page__c,
 				Required: question.forms__Required__c,
 				Title: question.forms__Title__c,
-				Record_Group: question.forms__Record_Group__c
+				Record_Group: question.forms__Record_Group__c,
+				Salesforce_Field: question.forms__Salesforce_Field__c
 			}
 
 		});
