@@ -1,4 +1,4 @@
-export const sync = (realm, forms, groups, syncForm) => {
+export const sync = (realm, forms, groups, picklists) => {
 
 	realm.write(() => {
 
@@ -94,8 +94,36 @@ export const sync = (realm, forms, groups, syncForm) => {
 			
 			realm.create('ChecklistGroup', group, 'all');
 
-		})
+		});
+
+		picklists.forEach(preparedPicklist => {
+
+			let picklist = preparedPicklist.picklist; 
+			let values = preparedPicklist.values;
+
+			let updatedPicklist = realm.create('Picklist', picklist, 'all');
+			let valuesList = updatedPicklist.PicklistValues;
+
+			if(valuesList.length > 0) {
+				realm.delete(valuesList);
+			}
+
+			values.forEach(value => {
+
+				valuesList.push(value); 
+
+			});
+
+		});
 
 	});
 
 }
+
+/**
+ * 
+ * 	public List<PicklistValue> PicklistValues;
+	public String sObjectName; 
+	public String Name;
+	public String Controller; 
+ */

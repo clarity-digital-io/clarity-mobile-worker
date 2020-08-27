@@ -110,7 +110,7 @@ export const prepare = (salesforceForms) => {
 		accum = accum.concat(preparedForm);
 		return accum; 
 
-	}, [])
+	}, []);
 	
 	return forms; 
 }

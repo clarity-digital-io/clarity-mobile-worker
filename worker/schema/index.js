@@ -190,3 +190,36 @@ export const ChecklistSchema = {
 		Status: 'string'
 	}
 }
+
+export const ChecklistSchema = {
+	name: 'Checklist',
+	primaryKey: 'Id', //userId
+	properties: {
+		Id: 'string',
+		ChecklistGroup: 'string', 
+		sObject: 'string',
+		RecordId: 'string',
+		Status: 'string'
+	}
+}
+
+export const PicklistSchema = {
+	name: 'Picklist',
+	primaryKey: 'Id', //userId
+	properties: {
+		Id: 'string',
+		sObjectName: 'string',
+		Name: 'string',
+		PicklistValues: 'PicklistValue[]'
+	}
+}
+
+export const PicklistValueSchema = {
+	name: 'PicklistValue',
+	primaryKey: 'Id',
+	properties: {
+		Id: 'string',
+		Label: 'string', 
+		APIName: 'string',
+	}
+}
