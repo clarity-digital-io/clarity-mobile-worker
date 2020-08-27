@@ -1,5 +1,5 @@
 import Realm from 'realm';
-import { FormSchema, QuestionSchema, QuestionOptionSchema, QuestionCriteriaSchema, FormConnectionSchema, FormConnectionFieldSchema, ChecklistGroupSchema, ChecklistSchema } from '../schema'; 
+import { FormSchema, QuestionSchema, QuestionOptionSchema, QuestionCriteriaSchema, FormConnectionSchema, FormConnectionFieldSchema, ChecklistGroupSchema, ChecklistSchema, PicklistSchema, PicklistValueSchema } from '../schema'; 
 
 const SERVER_URL = 'https://forms-dev.us1a.cloud.realm.io';
 const REALM_URL = 'realms://forms-dev.us1a.cloud.realm.io';
@@ -22,7 +22,9 @@ export const openRealm = async (organizationId) => {
 				QuestionCriteriaSchema, 
 				FormConnectionSchema, 
 				FormConnectionFieldSchema,
-				ChecklistGroupSchema
+				ChecklistGroupSchema,
+				PicklistSchema,
+				PicklistValueSchema
 			] 
 		};
 
