@@ -8,6 +8,7 @@ export const preparePicklists = (salesforcePicklists) => {
 		let nPicklist = {
 			Id: sObjectName + '-' + Name,
 			Name: Name,
+			sObjectName: sObjectName,
 			Controller: Controller
 		};
 
