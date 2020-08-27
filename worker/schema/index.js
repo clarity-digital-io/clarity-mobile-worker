@@ -193,7 +193,7 @@ export const ChecklistSchema = {
 
 export const PicklistSchema = {
 	name: 'Picklist',
-	primaryKey: 'Id', //userId
+	primaryKey: 'Id', 
 	properties: {
 		Id: 'string',
 		sObjectName: 'string',

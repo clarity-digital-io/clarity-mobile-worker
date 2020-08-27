@@ -1,5 +1,5 @@
 export const prepare = (salesforceForms) => {
-
+	console.log('salesforceForms', salesforceForms); 
 	const forms = salesforceForms.reduce((accum, obj) => {
 
 		let { form, questions, connections } = obj;

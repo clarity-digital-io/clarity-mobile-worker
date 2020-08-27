@@ -1,4 +1,5 @@
 export const preparePicklists = (salesforcePicklists) => {
+	console.log('salesforcePicklists', salesforcePicklists); 
 
 	const picklists = salesforcePicklists.reduce((accum, picklist) => {
 
