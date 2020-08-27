@@ -1,5 +1,6 @@
 import { openRealm } from '../realm';
 import { prepare } from '../helpers/forms';
+import { preparePicklists } from '../helpers/picklists';
 import { sync } from '../realm/sync';
 
 export const forms = async (job, done) => {
