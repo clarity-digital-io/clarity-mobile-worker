@@ -33,6 +33,7 @@ export const openRealm = async (organizationId) => {
 				console.log('progress', transferred, transferable)
 			})
 			.then(realm => {
+				console.log('realm', realm);
 				return realm; 
 			})
 			.catch((e) => {

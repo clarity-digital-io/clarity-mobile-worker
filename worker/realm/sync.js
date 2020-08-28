@@ -119,11 +119,3 @@ export const sync = (realm, forms, groups, picklists) => {
 	});
 
 }
-
-/**
- * 
- * 	public List<PicklistValue> PicklistValues;
-	public String sObjectName; 
-	public String Name;
-	public String Controller; 
- */
