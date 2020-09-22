@@ -163,7 +163,8 @@ export const ProfileSchema = {
 		FullName: 'string',
 		Avatar: 'string',
 		LastSync: 'date',
-		SyncStatus: 'string' //Complete / Requested / In Progress / Failed / Not Started
+		SyncStatus: 'string', //Complete / Requested / In Progress / Failed / Not Started
+		OrganizationId: 'string'
 	}
 }
 
